@@ -1,0 +1,1187 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>api package &mdash; Capstone News 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="api.tests package" href="api.tests.html" />
+    <link rel="prev" title="accounts.tests package" href="accounts.tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Capstone News
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">capstone_news_review</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accounts.html">accounts package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">api package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html">api.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-api.permissions">api.permissions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.CanReadApprovedArticles"><code class="docutils literal notranslate"><span class="pre">CanReadApprovedArticles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsEditor"><code class="docutils literal notranslate"><span class="pre">IsEditor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsJournalist"><code class="docutils literal notranslate"><span class="pre">IsJournalist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsJournalistOrEditor"><code class="docutils literal notranslate"><span class="pre">IsJournalistOrEditor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsOwnerOrEditor"><code class="docutils literal notranslate"><span class="pre">IsOwnerOrEditor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsOwnerOrEditorForNewsletter"><code class="docutils literal notranslate"><span class="pre">IsOwnerOrEditorForNewsletter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.permissions.IsReader"><code class="docutils literal notranslate"><span class="pre">IsReader</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-api.serializers">api.serializers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.ArticleCreateSerializer"><code class="docutils literal notranslate"><span class="pre">ArticleCreateSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.ArticleDetailSerializer"><code class="docutils literal notranslate"><span class="pre">ArticleDetailSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.ArticleListSerializer"><code class="docutils literal notranslate"><span class="pre">ArticleListSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.CustomUserSerializer"><code class="docutils literal notranslate"><span class="pre">CustomUserSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.JournalistSubscriptionSerializer"><code class="docutils literal notranslate"><span class="pre">JournalistSubscriptionSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.NewsletterCreateUpdateSerializer"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateUpdateSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.NewsletterDetailSerializer"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.NewsletterListSerializer"><code class="docutils literal notranslate"><span class="pre">NewsletterListSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.PublisherMembershipSerializer"><code class="docutils literal notranslate"><span class="pre">PublisherMembershipSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.PublisherSerializer"><code class="docutils literal notranslate"><span class="pre">PublisherSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.serializers.PublisherSubscriptionSerializer"><code class="docutils literal notranslate"><span class="pre">PublisherSubscriptionSerializer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-api.urls">api.urls module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-urls-py">api/urls.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-api.views">api.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ApproveArticleAPIView"><code class="docutils literal notranslate"><span class="pre">ApproveArticleAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ArticleDetailAPIView"><code class="docutils literal notranslate"><span class="pre">ArticleDetailAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.ArticleListCreateAPIView"><code class="docutils literal notranslate"><span class="pre">ArticleListCreateAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.JournalistSubscriptionDeleteAPIView"><code class="docutils literal notranslate"><span class="pre">JournalistSubscriptionDeleteAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.JournalistSubscriptionListCreateAPIView"><code class="docutils literal notranslate"><span class="pre">JournalistSubscriptionListCreateAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.NewsletterDetailAPIView"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.NewsletterListCreateAPIView"><code class="docutils literal notranslate"><span class="pre">NewsletterListCreateAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.NewsletterUpdateDeleteAPIView"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateDeleteAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PendingArticleListAPIView"><code class="docutils literal notranslate"><span class="pre">PendingArticleListAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherDetailAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherDetailAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherListAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherListAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherMembershipDetailAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherMembershipDetailAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherMembershipListAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherMembershipListAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherSubscriptionDeleteAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherSubscriptionDeleteAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PublisherSubscriptionListCreateAPIView"><code class="docutils literal notranslate"><span class="pre">PublisherSubscriptionListCreateAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.RejectArticleAPIView"><code class="docutils literal notranslate"><span class="pre">RejectArticleAPIView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.SubscribedArticleListAPIView"><code class="docutils literal notranslate"><span class="pre">SubscribedArticleListAPIView</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-api">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html">news package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Capstone News</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">capstone_news_review</a></li>
+      <li class="breadcrumb-item active">api package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-package">
+<h1>api package<a class="headerlink" href="#api-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.tests.html">api.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.tests.html#module-api.tests.test_article_api">api.tests.test_article_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.setUp"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_access_pending_article_detail"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_access_pending_article_detail()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_approve_article_and_triggers_subscriber_email"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_approve_article_and_triggers_subscriber_email()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_approve_pending_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_approve_pending_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_delete_article_via_detail_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_delete_article_via_detail_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_delete_newsletter"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_delete_newsletter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_can_reject_pending_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_can_reject_pending_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_editor_list_includes_pending_articles"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_editor_list_includes_pending_articles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_can_create_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_can_create_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_can_create_newsletter"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_can_create_newsletter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_can_patch_own_article_via_detail_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_can_patch_own_article_via_detail_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_cannot_access_subscribed_articles_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_cannot_access_subscribed_articles_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_cannot_approve_pending_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_cannot_approve_pending_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_journalist_list_includes_own_pending_articles"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_journalist_list_includes_own_pending_articles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_can_list_articles"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_can_list_articles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_can_list_newsletters"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_can_list_newsletters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_access_pending_article_detail"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_access_pending_article_detail()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_access_pending_articles_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_access_pending_articles_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_approve_pending_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_approve_pending_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_create_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_create_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_create_newsletter"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_create_newsletter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_delete_article_via_detail_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_delete_article_via_detail_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_delete_newsletter"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_delete_newsletter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_patch_article_via_detail_endpoint"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_patch_article_via_detail_endpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_cannot_reject_pending_article"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_cannot_reject_pending_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_list_excludes_pending_articles"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_list_excludes_pending_articles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="api.tests.html#api.tests.test_article_api.ArticleAPITests.test_reader_subscribed_returns_approved_articles"><code class="docutils literal notranslate"><span class="pre">ArticleAPITests.test_reader_subscribed_returns_approved_articles()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.tests.html#module-api.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-api.permissions">
+<span id="api-permissions-module"></span><h2>api.permissions module<a class="headerlink" href="#module-api.permissions" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.CanReadApprovedArticles">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">CanReadApprovedArticles</span></span><a class="reference internal" href="_modules/api/permissions.html#CanReadApprovedArticles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.CanReadApprovedArticles" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Object-level rule for article detail:
+- approved articles: any authenticated user can view
+- unapproved articles: editors only</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.CanReadApprovedArticles.has_object_permission">
+<span class="sig-name descname"><span class="pre">has_object_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#CanReadApprovedArticles.has_object_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.CanReadApprovedArticles.has_object_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.CanReadApprovedArticles.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'You</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">have</span> <span class="pre">permission</span> <span class="pre">to</span> <span class="pre">view</span> <span class="pre">this</span> <span class="pre">article.'</span></span><a class="headerlink" href="#api.permissions.CanReadApprovedArticles.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsEditor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsEditor</span></span><a class="reference internal" href="_modules/api/permissions.html#IsEditor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsEditor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allows access only to editors.
+Supports role field and group fallback.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsEditor.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsEditor.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsEditor.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsEditor.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Editor</span> <span class="pre">role</span> <span class="pre">required.'</span></span><a class="headerlink" href="#api.permissions.IsEditor.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsJournalist">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsJournalist</span></span><a class="reference internal" href="_modules/api/permissions.html#IsJournalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsJournalist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allows access only to journalists.
+Supports role field and group fallback.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsJournalist.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsJournalist.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsJournalist.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsJournalist.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Journalist</span> <span class="pre">role</span> <span class="pre">required.'</span></span><a class="headerlink" href="#api.permissions.IsJournalist.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsJournalistOrEditor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsJournalistOrEditor</span></span><a class="reference internal" href="_modules/api/permissions.html#IsJournalistOrEditor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsJournalistOrEditor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allows access to journalists or editors.
+Supports role field and group fallback.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsJournalistOrEditor.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsJournalistOrEditor.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsJournalistOrEditor.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsJournalistOrEditor.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Journalist</span> <span class="pre">or</span> <span class="pre">Editor</span> <span class="pre">role</span> <span class="pre">required.'</span></span><a class="headerlink" href="#api.permissions.IsJournalistOrEditor.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsOwnerOrEditor</span></span><a class="reference internal" href="_modules/api/permissions.html#IsOwnerOrEditor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsOwnerOrEditor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Object-level permission for resource owners and editors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditor.has_object_permission">
+<span class="sig-name descname"><span class="pre">has_object_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsOwnerOrEditor.has_object_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsOwnerOrEditor.has_object_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditor.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'You</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">have</span> <span class="pre">permission</span> <span class="pre">to</span> <span class="pre">access</span> <span class="pre">this</span> <span class="pre">resource.'</span></span><a class="headerlink" href="#api.permissions.IsOwnerOrEditor.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditorForNewsletter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsOwnerOrEditorForNewsletter</span></span><a class="reference internal" href="_modules/api/permissions.html#IsOwnerOrEditorForNewsletter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsOwnerOrEditorForNewsletter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Object-level permission for Newsletter:
+- owner/author can modify
+- editors can modify any newsletter</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditorForNewsletter.has_object_permission">
+<span class="sig-name descname"><span class="pre">has_object_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsOwnerOrEditorForNewsletter.has_object_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsOwnerOrEditorForNewsletter.has_object_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsOwnerOrEditorForNewsletter.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'You</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">have</span> <span class="pre">permission</span> <span class="pre">to</span> <span class="pre">modify</span> <span class="pre">this</span> <span class="pre">newsletter.'</span></span><a class="headerlink" href="#api.permissions.IsOwnerOrEditorForNewsletter.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.permissions.IsReader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.permissions.</span></span><span class="sig-name descname"><span class="pre">IsReader</span></span><a class="reference internal" href="_modules/api/permissions.html#IsReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsReader" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allows access only to readers.
+Supports role field and group fallback.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.permissions.IsReader.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/api/permissions.html#IsReader.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.permissions.IsReader.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.permissions.IsReader.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Reader</span> <span class="pre">role</span> <span class="pre">required.'</span></span><a class="headerlink" href="#api.permissions.IsReader.message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api.serializers">
+<span id="api-serializers-module"></span><h2>api.serializers module<a class="headerlink" href="#module-api.serializers" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleCreateSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">ArticleCreateSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#ArticleCreateSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleCreateSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Serializer used when journalists submit new articles.</p>
+<p>We do NOT expose author/approved fields to the client:
+- author is set from request.user
+- approved is forced to False in the view</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleCreateSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#ArticleCreateSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleCreateSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleCreateSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['title',</span> <span class="pre">'content',</span> <span class="pre">'publisher']</span></span><a class="headerlink" href="#api.serializers.ArticleCreateSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleCreateSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.ArticleCreateSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Article" title="news.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleDetailSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">ArticleDetailSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#ArticleDetailSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleDetailSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Article detail serializer.
+Includes full content and approval metadata.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleDetailSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#ArticleDetailSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleDetailSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleDetailSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'content',</span> <span class="pre">'author',</span> <span class="pre">'author_username',</span> <span class="pre">'publisher',</span> <span class="pre">'publisher_name',</span> <span class="pre">'approved',</span> <span class="pre">'created_at',</span> <span class="pre">'approved_at',</span> <span class="pre">'approved_by',</span> <span class="pre">'approved_by_username']</span></span><a class="headerlink" href="#api.serializers.ArticleDetailSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleDetailSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.ArticleDetailSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Article" title="news.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleDetailSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['author',</span> <span class="pre">'approved',</span> <span class="pre">'created_at',</span> <span class="pre">'approved_at',</span> <span class="pre">'approved_by']</span></span><a class="headerlink" href="#api.serializers.ArticleDetailSerializer.Meta.read_only_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleListSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">ArticleListSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#ArticleListSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleListSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Public/article-list serializer.
+Keeps the response small for list endpoints.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.ArticleListSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#ArticleListSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.ArticleListSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleListSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'author',</span> <span class="pre">'author_username',</span> <span class="pre">'publisher',</span> <span class="pre">'publisher_name',</span> <span class="pre">'approved',</span> <span class="pre">'created_at',</span> <span class="pre">'approved_at']</span></span><a class="headerlink" href="#api.serializers.ArticleListSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.ArticleListSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.ArticleListSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Article" title="news.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.CustomUserSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">CustomUserSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#CustomUserSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.CustomUserSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Safe read-only user serializer for API responses.
+Includes basic identity and role fields only.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.CustomUserSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#CustomUserSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.CustomUserSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.CustomUserSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'username',</span> <span class="pre">'email',</span> <span class="pre">'role']</span></span><a class="headerlink" href="#api.serializers.CustomUserSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.CustomUserSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.CustomUserSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="accounts.html#accounts.models.CustomUser" title="accounts.models.CustomUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUser</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.CustomUserSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'username',</span> <span class="pre">'email',</span> <span class="pre">'role']</span></span><a class="headerlink" href="#api.serializers.CustomUserSerializer.Meta.read_only_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.JournalistSubscriptionSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">JournalistSubscriptionSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#JournalistSubscriptionSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.JournalistSubscriptionSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Reader subscription to a journalist.</p>
+<p>POST input:
+- journalist</p>
+<p>Read output:
+- includes usernames for convenience</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.JournalistSubscriptionSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#JournalistSubscriptionSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.JournalistSubscriptionSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.JournalistSubscriptionSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'journalist',</span> <span class="pre">'journalist_username',</span> <span class="pre">'reader',</span> <span class="pre">'reader_username',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.JournalistSubscriptionSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.JournalistSubscriptionSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.JournalistSubscriptionSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.JournalistSubscription" title="news.models.JournalistSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">JournalistSubscription</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.JournalistSubscriptionSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['reader',</span> <span class="pre">'reader_username',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.JournalistSubscriptionSerializer.Meta.read_only_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterCreateUpdateSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">NewsletterCreateUpdateSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#NewsletterCreateUpdateSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterCreateUpdateSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Create/update serializer for newsletters.</p>
+<p>Allows setting article IDs (many-to-many).
+Author is set from request.user in the view.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterCreateUpdateSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#NewsletterCreateUpdateSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterCreateUpdateSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterCreateUpdateSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['title',</span> <span class="pre">'description',</span> <span class="pre">'articles']</span></span><a class="headerlink" href="#api.serializers.NewsletterCreateUpdateSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterCreateUpdateSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.NewsletterCreateUpdateSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Newsletter" title="news.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterDetailSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">NewsletterDetailSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#NewsletterDetailSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterDetailSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Detailed serializer for a newsletter, including linked article IDs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterDetailSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#NewsletterDetailSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterDetailSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterDetailSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'description',</span> <span class="pre">'author',</span> <span class="pre">'author_username',</span> <span class="pre">'articles',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.NewsletterDetailSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterDetailSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.NewsletterDetailSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Newsletter" title="news.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterDetailSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['author',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.NewsletterDetailSerializer.Meta.read_only_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterListSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">NewsletterListSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#NewsletterListSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterListSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Lightweight serializer for newsletter list endpoint.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.NewsletterListSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#NewsletterListSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.NewsletterListSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterListSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'title',</span> <span class="pre">'description',</span> <span class="pre">'author_username',</span> <span class="pre">'article_count',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.NewsletterListSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.NewsletterListSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.NewsletterListSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Newsletter" title="news.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherMembershipSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">PublisherMembershipSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#PublisherMembershipSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherMembershipSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Read-only serializer for publisher memberships.</p>
+<p>Shows which user belongs to which publisher and their membership role
+(editor/journalist within that publisher).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherMembershipSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#PublisherMembershipSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherMembershipSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherMembershipSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'publisher',</span> <span class="pre">'publisher_name',</span> <span class="pre">'user',</span> <span class="pre">'user_username',</span> <span class="pre">'member_role']</span></span><a class="headerlink" href="#api.serializers.PublisherMembershipSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherMembershipSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.PublisherMembershipSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.PublisherMembership" title="news.models.PublisherMembership"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherMembership</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">PublisherSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#PublisherSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Read-only publisher serializer.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#PublisherSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'name',</span> <span class="pre">'description',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.PublisherSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.PublisherSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.Publisher" title="news.models.Publisher"><code class="xref py py-class docutils literal notranslate"><span class="pre">Publisher</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherSubscriptionSerializer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.serializers.</span></span><span class="sig-name descname"><span class="pre">PublisherSubscriptionSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/serializers.html#PublisherSubscriptionSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherSubscriptionSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Reader subscription to a publisher.</p>
+<p>POST input:
+- publisher</p>
+<p>Read output:
+- includes publisher name and reader username for convenience</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.serializers.PublisherSubscriptionSerializer.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/api/serializers.html#PublisherSubscriptionSerializer.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.serializers.PublisherSubscriptionSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherSubscriptionSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'publisher',</span> <span class="pre">'publisher_name',</span> <span class="pre">'reader',</span> <span class="pre">'reader_username',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.PublisherSubscriptionSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherSubscriptionSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#api.serializers.PublisherSubscriptionSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="news.html#news.models.PublisherSubscription" title="news.models.PublisherSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherSubscription</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.serializers.PublisherSubscriptionSerializer.Meta.read_only_fields">
+<span class="sig-name descname"><span class="pre">read_only_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['reader',</span> <span class="pre">'reader_username',</span> <span class="pre">'created_at']</span></span><a class="headerlink" href="#api.serializers.PublisherSubscriptionSerializer.Meta.read_only_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api.urls">
+<span id="api-urls-module"></span><h2>api.urls module<a class="headerlink" href="#module-api.urls" title="Link to this heading"></a></h2>
+<section id="api-urls-py">
+<h3>api/urls.py<a class="headerlink" href="#api-urls-py" title="Link to this heading"></a></h3>
+<p>DRF API routes for the Capstone News app.</p>
+</section>
+</section>
+<section id="module-api.views">
+<span id="api-views-module"></span><h2>api.views module<a class="headerlink" href="#module-api.views" title="Link to this heading"></a></h2>
+<p>API views for the Capstone News project.</p>
+<p>This module provides endpoints for article management, article approval,
+subscriptions, newsletters, publishers, and publisher memberships.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.ApproveArticleAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">ApproveArticleAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#ApproveArticleAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ApproveArticleAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Editor-only action endpoint to approve an article.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ApproveArticleAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsEditor'&gt;]</span></span><a class="headerlink" href="#api.views.ApproveArticleAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ApproveArticleAPIView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response</span></span></span><a class="reference internal" href="_modules/api/views.html#ApproveArticleAPIView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ApproveArticleAPIView.post" title="Link to this definition"></a></dt>
+<dd><p>Approve the specified article.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDetailAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#ArticleDetailAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleDetailAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveUpdateDestroyAPIView</span></code></p>
+<p>Retrieve/update/delete a single article.</p>
+<p>GET:
+- Approved articles: any authenticated user
+- Unapproved articles: editors only</p>
+<p>PUT/PATCH/DELETE:
+- Owner journalist or editor only</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleDetailAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleDetailAPIView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the article and check permissions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleDetailAPIView.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleDetailAPIView.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Return permissions based on request method and article approval status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleDetailAPIView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleDetailAPIView.get_serializer_class" title="Link to this definition"></a></dt>
+<dd><p>Return the serializer used for the current request method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.ArticleDetailAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.ArticleDetailAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[&lt;Article:</span> <span class="pre">article</span> <span class="pre">to</span> <span class="pre">test</span> <span class="pre">email&gt;,</span> <span class="pre">&lt;Article:</span> <span class="pre">new</span> <span class="pre">article&gt;,</span> <span class="pre">&lt;Article:</span> <span class="pre">123&gt;]&gt;</span></span><a class="headerlink" href="#api.views.ArticleDetailAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.ArticleListCreateAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">ArticleListCreateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#ArticleListCreateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleListCreateAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListCreateAPIView</span></code></p>
+<dl class="simple">
+<dt>GET:</dt><dd><ul class="simple">
+<li><p>Authenticated users can list approved articles only.</p></li>
+</ul>
+</dd>
+<dt>POST:</dt><dd><ul class="simple">
+<li><p>Journalists can submit new articles.</p></li>
+<li><p>author is automatically set from request.user</p></li>
+<li><p>approved is forced to False</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleListCreateAPIView.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleListCreateAPIView.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleListCreateAPIView.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Return permissions based on whether the request is read or create.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleListCreateAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleListCreateAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleListCreateAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return articles available to the current authenticated user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleListCreateAPIView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleListCreateAPIView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleListCreateAPIView.get_serializer_class" title="Link to this definition"></a></dt>
+<dd><p>Return the serializer used for the current request method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.ArticleListCreateAPIView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/api/views.html#ArticleListCreateAPIView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.ArticleListCreateAPIView.perform_create" title="Link to this definition"></a></dt>
+<dd><p>Create a new article for the current journalist as pending approval.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionDeleteAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">JournalistSubscriptionDeleteAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#JournalistSubscriptionDeleteAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.JournalistSubscriptionDeleteAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DestroyAPIView</span></code></p>
+<p>Reader unsubscribe endpoint for journalist subscriptions.</p>
+<p>Readers can only delete their own subscriptions.
+Editors may delete any (fallback for admin/testing).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionDeleteAPIView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#JournalistSubscriptionDeleteAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.JournalistSubscriptionDeleteAPIView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the journalist subscription and check permissions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionDeleteAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsOwnerOrEditor'&gt;]</span></span><a class="headerlink" href="#api.views.JournalistSubscriptionDeleteAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionDeleteAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[&lt;JournalistSubscription:</span> <span class="pre">sergioreader</span> <span class="pre">-&gt;</span> <span class="pre">Sergiojournalist&gt;]&gt;</span></span><a class="headerlink" href="#api.views.JournalistSubscriptionDeleteAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionDeleteAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.JournalistSubscriptionDeleteAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.JournalistSubscriptionSerializer" title="api.serializers.JournalistSubscriptionSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">JournalistSubscriptionSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionListCreateAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">JournalistSubscriptionListCreateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#JournalistSubscriptionListCreateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.JournalistSubscriptionListCreateAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListCreateAPIView</span></code></p>
+<p>Reader subscription endpoint for journalists.</p>
+<p>GET:
+- readers see only their own journalist subscriptions</p>
+<p>POST:
+- readers subscribe to a journalist
+- reader is set automatically from request.user</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionListCreateAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#JournalistSubscriptionListCreateAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.JournalistSubscriptionListCreateAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the queryset of journalist subscriptions for the current reader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionListCreateAPIView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/api/views.html#JournalistSubscriptionListCreateAPIView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.JournalistSubscriptionListCreateAPIView.perform_create" title="Link to this definition"></a></dt>
+<dd><p>Create a new journalist subscription for the current reader.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionListCreateAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsReader'&gt;]</span></span><a class="headerlink" href="#api.views.JournalistSubscriptionListCreateAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.JournalistSubscriptionListCreateAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.JournalistSubscriptionListCreateAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.JournalistSubscriptionSerializer" title="api.serializers.JournalistSubscriptionSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">JournalistSubscriptionSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.NewsletterDetailAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterDetailAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#NewsletterDetailAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterDetailAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveUpdateDestroyAPIView</span></code></p>
+<p>Retrieve/update/delete a newsletter.</p>
+<p>GET:
+- authenticated users can view (subject to your existing permissions)</p>
+<p>PUT/PATCH/DELETE:
+- owner journalist or editor only</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterDetailAPIView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterDetailAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterDetailAPIView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the newsletter and check permissions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterDetailAPIView.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterDetailAPIView.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterDetailAPIView.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Return permissions based on request method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterDetailAPIView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterDetailAPIView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterDetailAPIView.get_serializer_class" title="Link to this definition"></a></dt>
+<dd><p>Return the serializer used for the current request method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.NewsletterDetailAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#api.views.NewsletterDetailAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterListCreateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#NewsletterListCreateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterListCreateAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListCreateAPIView</span></code></p>
+<p>Newsletters endpoint.</p>
+<p>GET:
+- any authenticated user can list newsletters</p>
+<p>POST:
+- journalists and editors can create newsletters
+- author is set automatically from request.user</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterListCreateAPIView.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterListCreateAPIView.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Return permissions based on whether the request is read or create.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterListCreateAPIView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterListCreateAPIView.get_serializer_class" title="Link to this definition"></a></dt>
+<dd><p>Return the serializer used for the current request method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterListCreateAPIView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterListCreateAPIView.perform_create" title="Link to this definition"></a></dt>
+<dd><p>Create a new newsletter with the current user as the author.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.NewsletterListCreateAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.NewsletterListCreateAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#api.views.NewsletterListCreateAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.NewsletterUpdateDeleteAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterUpdateDeleteAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#NewsletterUpdateDeleteAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterUpdateDeleteAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveUpdateDestroyAPIView</span></code></p>
+<p>Update/delete a newsletter.</p>
+<p>Rules:
+- Author can update/delete own newsletter
+- Editors can update/delete any newsletter</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterUpdateDeleteAPIView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterUpdateDeleteAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterUpdateDeleteAPIView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the newsletter and check permissions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.NewsletterUpdateDeleteAPIView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#NewsletterUpdateDeleteAPIView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.NewsletterUpdateDeleteAPIView.get_serializer_class" title="Link to this definition"></a></dt>
+<dd><p>Return the serializer used for the current request method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.NewsletterUpdateDeleteAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsOwnerOrEditorForNewsletter'&gt;]</span></span><a class="headerlink" href="#api.views.NewsletterUpdateDeleteAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.NewsletterUpdateDeleteAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#api.views.NewsletterUpdateDeleteAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PendingArticleListAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PendingArticleListAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PendingArticleListAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PendingArticleListAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>Editor-only list of pending articles (approved=False).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PendingArticleListAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#PendingArticleListAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PendingArticleListAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the queryset of pending articles for editors.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PendingArticleListAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsEditor'&gt;]</span></span><a class="headerlink" href="#api.views.PendingArticleListAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PendingArticleListAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PendingArticleListAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.ArticleListSerializer" title="api.serializers.ArticleListSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleListSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherDetailAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherDetailAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherDetailAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherDetailAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveAPIView</span></code></p>
+<p>Retrieve a single publisher (authenticated users).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherDetailAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherDetailAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherDetailAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[&lt;Publisher:</span> <span class="pre">Sergio</span> <span class="pre">Zanela&gt;]&gt;</span></span><a class="headerlink" href="#api.views.PublisherDetailAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherDetailAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherDetailAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherSerializer" title="api.serializers.PublisherSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherListAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherListAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherListAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherListAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>List all publishers (authenticated users).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherListAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherListAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherListAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[&lt;Publisher:</span> <span class="pre">Sergio</span> <span class="pre">Zanela&gt;]&gt;</span></span><a class="headerlink" href="#api.views.PublisherListAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherListAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherListAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherSerializer" title="api.serializers.PublisherSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipDetailAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherMembershipDetailAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherMembershipDetailAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherMembershipDetailAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrieveAPIView</span></code></p>
+<p>Retrieve a single publisher membership (authenticated users).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipDetailAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherMembershipDetailAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipDetailAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#api.views.PublisherMembershipDetailAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipDetailAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherMembershipDetailAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherMembershipSerializer" title="api.serializers.PublisherMembershipSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherMembershipSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipListAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherMembershipListAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherMembershipListAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherMembershipListAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>List publisher memberships (authenticated users).</p>
+<p>Optional filters:
+- /api/publisher-memberships/?publisher=&lt;id&gt;
+- /api/publisher-memberships/?user=&lt;id&gt;
+- /api/publisher-memberships/?member_role=editor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipListAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#PublisherMembershipListAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherMembershipListAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the queryset of publisher memberships with optional filters.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipListAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherMembershipListAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherMembershipListAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherMembershipListAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherMembershipSerializer" title="api.serializers.PublisherMembershipSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherMembershipSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionDeleteAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherSubscriptionDeleteAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherSubscriptionDeleteAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherSubscriptionDeleteAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DestroyAPIView</span></code></p>
+<p>Reader unsubscribe endpoint for publisher subscriptions.</p>
+<p>Readers can only delete their own subscriptions.
+Editors may delete any (fallback for admin/testing).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionDeleteAPIView.get_object">
+<span class="sig-name descname"><span class="pre">get_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#PublisherSubscriptionDeleteAPIView.get_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherSubscriptionDeleteAPIView.get_object" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the publisher subscription and check permissions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionDeleteAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsOwnerOrEditor'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherSubscriptionDeleteAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionDeleteAPIView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[]&gt;</span></span><a class="headerlink" href="#api.views.PublisherSubscriptionDeleteAPIView.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionDeleteAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherSubscriptionDeleteAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherSubscriptionSerializer" title="api.serializers.PublisherSubscriptionSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherSubscriptionSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionListCreateAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PublisherSubscriptionListCreateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PublisherSubscriptionListCreateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherSubscriptionListCreateAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListCreateAPIView</span></code></p>
+<p>Reader subscription endpoint for publishers.</p>
+<p>GET:
+- readers see only their own publisher subscriptions</p>
+<p>POST:
+- readers subscribe to a publisher
+- reader is set automatically from request.user</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionListCreateAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#PublisherSubscriptionListCreateAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherSubscriptionListCreateAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the queryset of publisher subscriptions for the current reader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionListCreateAPIView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/api/views.html#PublisherSubscriptionListCreateAPIView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PublisherSubscriptionListCreateAPIView.perform_create" title="Link to this definition"></a></dt>
+<dd><p>Create a new publisher subscription for the current reader.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionListCreateAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsReader'&gt;]</span></span><a class="headerlink" href="#api.views.PublisherSubscriptionListCreateAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PublisherSubscriptionListCreateAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.PublisherSubscriptionListCreateAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.PublisherSubscriptionSerializer" title="api.serializers.PublisherSubscriptionSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PublisherSubscriptionSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.RejectArticleAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">RejectArticleAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#RejectArticleAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.RejectArticleAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Editor-only action endpoint to reject an article.</p>
+<p>Current behavior: delete article (simple version).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.RejectArticleAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsEditor'&gt;]</span></span><a class="headerlink" href="#api.views.RejectArticleAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.RejectArticleAPIView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response</span></span></span><a class="reference internal" href="_modules/api/views.html#RejectArticleAPIView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.RejectArticleAPIView.post" title="Link to this definition"></a></dt>
+<dd><p>Reject the specified article.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.SubscribedArticleListAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">SubscribedArticleListAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#SubscribedArticleListAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.SubscribedArticleListAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListAPIView</span></code></p>
+<p>Returns approved articles from the authenticated reader’s subscribed
+publishers and subscribed journalists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.SubscribedArticleListAPIView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/api/views.html#SubscribedArticleListAPIView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.SubscribedArticleListAPIView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the queryset of approved articles from the reader’s subscriptions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.SubscribedArticleListAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'api.permissions.IsReader'&gt;]</span></span><a class="headerlink" href="#api.views.SubscribedArticleListAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.SubscribedArticleListAPIView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.SubscribedArticleListAPIView.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#api.serializers.ArticleListSerializer" title="api.serializers.ArticleListSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleListSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-api" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="accounts.tests.html" class="btn btn-neutral float-left" title="accounts.tests package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.tests.html" class="btn btn-neutral float-right" title="api.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Sergio Zanela.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

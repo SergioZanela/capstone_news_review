@@ -1,12 +1,8 @@
 """
-news/models.py
+Database models for the Capstone News project.
 
-Database models for:
-- Publisher
-- PublisherMembership (links users to publishers with a role
-  inside that publisher)
-- Article
-- Newsletter
+This module defines publishers, publisher memberships, articles,
+and newsletters.
 """
 
 from django.conf import settings
@@ -136,14 +132,7 @@ class Article(models.Model):
 
     def clean(self):
         """
-        Model-level validation for Article.
-
-        Why this guard exists:
-        - Django admin runs full_clean() before saving.
-        - If 'author' is not chosen yet, accessing self.author can raise
-          RelatedObjectDoesNotExist ("Article has no author").
-        - So we first check author_id (safe FK id) before reading
-          self.author.role.
+        Validate that the article has a valid author before saving.
         """
         super().clean()
 
@@ -235,7 +224,7 @@ class PublisherSubscription(models.Model):
 
 class JournalistSubscription(models.Model):
     """
-    A reader subscribing to an independent Journalist   .
+    A reader subscribing to an independent Journalist.
     """
 
     journalist = models.ForeignKey(

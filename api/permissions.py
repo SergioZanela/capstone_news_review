@@ -96,10 +96,7 @@ class IsReader(BasePermission):
 
 class IsOwnerOrEditor(BasePermission):
     """
-    Object-level permission:
-    - owner can access/modify their own object
-      (supports reader-owned and author-owned objects)
-    - editors are allowed as fallback
+    Object-level permission for resource owners and editors.
     """
 
     message = "You do not have permission to access this resource."

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Publishers | Capstone News{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-1">Publishers</h1>
+      <p class="text-muted mb-0">
+        Editors can manage publishers here.
+      </p>
+    </div>
+    <a href="{% url 'publisher_create' %}" class="btn btn-primary">
+      Add Publisher
+    </a>
+  </div>
+
+  {% if publishers %}
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th class="px-3 py-3">Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for publisher in publishers %}
+                <tr>
+                  <td class="px-3 py-3">{{ publisher.name }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      No publishers have been created yet.
+    </div>
+  {% endif %}
+{% endblock %}

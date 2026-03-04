@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>Confirm</title></head>
+  <body>
+    <h1>Confirm {{ action }}</h1>
+
+    <!-- This page is optional; you can skip it by only using POST forms -->
+    <p>Article: {{ article }}</p>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, {{ action }}</button>
+      <a href="{% url 'approval_queue' %}">Cancel</a>
+    </form>
+  </body>
+</html>

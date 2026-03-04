@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Capstone News{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* Login page background on the visible main area (between navbar and footer) */
+  main.flex-grow-1 {
+    position: relative;
+    background:
+      linear-gradient(rgba(8, 12, 18, 0.72), rgba(12, 18, 28, 0.82)),
+      url("/static/images/newspaper-background-concept.jpg") center/cover no-repeat !important;
+  }
+
+  /* Keep content above background/overlay */
+  main.flex-grow-1 > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Optional extra dark overlay for readability */
+  main.flex-grow-1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.14);
+    pointer-events: none;
+  }
+
+  .login-page-wrap {
+    min-height: calc(100vh - 220px); /* navbar + footer area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  .login-subtext {
+    color: #6b7280;
+  }
+
+  @media (max-width: 576px) {
+    .login-page-wrap {
+      min-height: calc(100vh - 180px);
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="login-page-wrap">
+    <div class="row justify-content-center w-100">
+      <div class="col-md-8 col-lg-5 col-xl-4">
+        <div class="card login-card border-0">
+          <div class="card-body p-4 p-md-5">
+            <h1 class="h3 mb-3 text-center">Login</h1>
+            <p class="login-subtext text-center mb-4">
+              Sign in to access articles, submissions, approvals, and API features.
+            </p>
+
+            {% if form.errors %}
+              <div class="alert alert-danger" role="alert">
+                Invalid username or password. Please try again.
+              </div>
+            {% endif %}
+
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="mb-3">
+                <label for="{{ form.username.id_for_label }}" class="form-label">
+                  {{ form.username.label }}
+                </label>
+                {{ form.username }}
+              </div>
+
+              <div class="mb-3">
+                <label for="{{ form.password.id_for_label }}" class="form-label">
+                  {{ form.password.label }}
+                </label>
+                {{ form.password }}
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                  Login
+                </button>
+              </div>
+            </form>
+            <p class="mt-3 mb-0 text-center">
+              Don't have an account?
+              <a href="{% url 'register' %}">Create account</a>
+            </p>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

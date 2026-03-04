@@ -2,12 +2,31 @@
 
 Capstone News is a Django-based news platform with role-based access control, article approval workflow, reader subscriptions, email notifications, and REST API support using Django REST Framework (DRF).
 
+This repository is the clean review submission for the final Django News Application capstone project. It includes the application source code, Sphinx-generated documentation, Docker support, and reviewer-friendly setup instructions.
+
+## What was added for this task
+
+This submission was updated to satisfy the documentation and containerisation assessment requirements:
+
+- Added and reviewed `.gitignore` to exclude local-only and sensitive files.
+- Kept `.env` private and provided `.env.example` for setup guidance.
+- Added concise module, class, and method docstrings in selected project files.
+- Generated Sphinx documentation and stored it in the `docs/` folder.
+- Added a `Dockerfile` to run the project in a container.
+- Added a `.dockerignore` file to keep Docker builds clean.
+- Updated setup instructions for both local virtual environment use and Docker use.
+- Confirmed the project works locally and can also run in Docker with the correct database host settings.
+
+---
+
 ## Features
 
 - Custom user roles: Reader, Journalist, and Editor
 - Journalist article submission workflow
-- Editor approval queue for pending articles
 - Journalist article editing with re-approval after changes
+- Journalist **My Articles** page
+- Editor approval queue for pending articles
+- Editor publisher management from the main application UI
 - Reader subscriptions to journalists and publishers
 - Email notifications to subscribers when an article is approved
 - REST API with JWT authentication
@@ -19,75 +38,65 @@ Capstone News is a Django-based news platform with role-based access control, ar
 
 ## Tech Stack
 
-- Python
+- Python 3.13
 - Django
 - Django REST Framework
 - MariaDB
-- Bootstrap 5
 - PyMySQL
 - SimpleJWT
+- Sphinx
+- Docker
+- Bootstrap 5
 
 ---
 
 ## Project Structure
 
 ```text
-capstone_news/
+capstone_news_review/
 │
 ├── manage.py
 ├── requirements.txt
 ├── README.md
+├── Dockerfile
+├── .dockerignore
+├── .gitignore
 ├── .env.example
 │
 ├── config/
-│   ├── settings.py
-│   ├── urls.py
-│   └── ...
-│
 ├── accounts/
-│   ├── models.py
-│   ├── forms.py
-│   ├── views.py
-│   ├── signals.py
-│   ├── admin.py
-│   └── migrations/
-│
 ├── news/
-│   ├── models.py
-│   ├── forms.py
-│   ├── views.py
-│   ├── urls.py
-│   ├── services.py
-│   └── templates/news/
-│
 ├── api/
-│   ├── serializers.py
-│   ├── views.py
-│   ├── permissions.py
-│   ├── urls.py
-│   └── tests/
-│
+├── core/
+├── integrations/
 ├── templates/
-│   ├── base.html
-│   └── registration/
-│       ├── login.html
-│       └── register.html
-│
-└── static/
-    └── ...
+├── static/
+└── docs/
+    ├── source/
+    └── build/html/
 ```
 
 ---
 
-## Setup Instructions
+## Branches used for this task
+
+The assessment work was organised using separate branches before being merged into `main`:
+
+- `docs` - docstrings, Sphinx setup, generated documentation
+- `container` - Docker configuration
+- `main` - final merged submission branch
+
+---
+
+## Local setup with virtual environment
 
 These instructions are written for Windows PowerShell.
 
 ### 1. Clone the repository
 
 ```powershell
-git clone https://github.com/SergioZanela/capstone_news.git
-cd capstone_news
+git clone https://github.com/SergioZanela/capstone_news_review.git
+cd capstone_news_review
 ```
 
 ### 2. Create and activate a virtual environment
@@ -119,24 +128,7 @@ Copy `.env.example` to `.env`:
 Copy-Item .env.example .env
 ```
 
-Open `.env` and update the values for your local environment.
-
-Example:
-
-```env
-SECRET_KEY=change-me-in-production
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
-
-DB_NAME=capstone_news
-DB_USER=root
-DB_PASSWORD=your_mariadb_password
-DB_HOST=127.0.0.1
-DB_PORT=3306
-
-EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
-DEFAULT_FROM_EMAIL=no-reply@capstonenews.local
-```
+Then open `.env` and replace the placeholder values with your own settings.
 
 ### 5. Create the MariaDB database
 
@@ -181,31 +173,77 @@ http://127.0.0.1:8000/
 
 ---
 
-## Environment Variables
+## Docker setup
 
-The project loads configuration from `.env`.
+The project can also be run with Docker.
 
-Required values:
+### 1. Review the environment template
+
+This project includes `.env.example` with notes for:
+
+- standard MariaDB local development values
+- Docker-specific guidance for database host overrides
+
+If you are running Docker against a MariaDB server on your Windows machine, use:
 
 ```env
-SECRET_KEY=change-me-in-production
+DB_HOST=host.docker.internal
+```
+
+instead of `127.0.0.1` inside the container environment.
+
+### 2. Build the Docker image
+
+```powershell
+docker build -t capstone-news-app .
+```
+
+### 3. Run the container
+
+```powershell
+docker run --env-file .env -p 8000:8000 capstone-news-app
+```
+
+Open the application in your browser:
+
+```text
+http://localhost:8000/
+```
+
+### Notes
+
+- The container reads environment variables from the file passed with `--env-file`.
+- Do not commit real secrets to the repository.
+- If you test Docker with a host-installed MariaDB server, `host.docker.internal` is typically required for the database host.
+
+---
+
+## Environment variables
+
+The project loads configuration from `.env` automatically.
+
+Typical values include:
+
+```env
+SECRET_KEY=your_secret_key_here
 DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
-DB_NAME=capstone_news
-DB_USER=root
-DB_PASSWORD=your_mariadb_password
+
+DB_NAME=your_database_name
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
 DB_HOST=127.0.0.1
 DB_PORT=3306
+
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 DEFAULT_FROM_EMAIL=no-reply@capstonenews.local
 ```
 
-`.env.example` is included as a template.
-Create your local `.env` by copying `.env.example` and replacing the placeholder values with your own configuration.
+`.env.example` is included as a safe template and setup reference.
 
 ---
 
-## User Roles
+## User roles
 
 ### Reader
 - Can register through the application
@@ -219,35 +257,36 @@ Create your local `.env` by copying `.env.example` and replacing the placeholder
 - Can view their own articles
 - Can edit their own articles
 - Edited articles are returned to pending approval
+- Can manage articles through the **My Articles** page
 
 ### Editor
 - Can review pending articles in the approval queue
 - Can approve or reject articles
-- Can create and manage publishers
+- Can create publishers from the main application UI
+- Can manage the visible publisher workflow used by journalists
 
 ---
 
-## Publisher Management
+## Publisher workflow
 
-Publishers are managed through the editor interface in the main application.
+Publishers are managed through the main application interface.
 
-Editor workflow:
 1. Log in as an Editor
 2. Open the **Publishers** page from the navigation bar
 3. Click **Add Publisher**
 4. Create the publisher
-5. Journalists can then assign that publisher to articles
+5. Journalists can then assign that publisher when creating or editing articles
 
 ---
 
-## Article Workflow
+## Article workflow
 
 ### Journalist workflow
 1. Log in as a Journalist
 2. Open **Submit Article**
 3. Create a new article
 4. The article is saved as pending
-5. Open **My Articles** to view submitted articles
+5. Open **My Articles** to review existing submissions
 6. Edit the article if needed
 7. After editing, the article returns to pending approval
 
@@ -264,21 +303,22 @@ Editor workflow:
 
 ---
 
-## Authentication and Registration
+## Authentication and registration
 
-- The project uses Django authentication for the web interface
-- Login and logout use Django's built-in auth views
-- Registration uses the custom user registration form
-- Public self-registration supports Reader and Journalist accounts
-- Editor accounts should be created through administration
+- The web interface uses Django authentication.
+- Login and logout use Django's built-in auth views.
+- Registration uses the custom user registration form.
+- Public self-registration supports Reader and Journalist accounts.
+- Editor accounts should be created through administration.
 
 ---
 
-## Email Notifications
+## Email notifications
 
-When an editor approves an article, the application sends an email notification to readers who are subscribed to:
+When an editor approves an article, the application sends email notifications to readers subscribed to:
+
 - the article's publisher
-- and/or the article's journalist
+- the article's journalist
 
 For local development, the console email backend can be used through `.env`.
 
@@ -289,6 +329,7 @@ For local development, the console email backend can be used through `.env`.
 The project exposes REST endpoints so users can interact with articles, subscriptions, publishers, and newsletters using JSON.
 
 ### Authentication
+
 - Session authentication
 - JWT authentication with SimpleJWT
 
@@ -359,33 +400,21 @@ GET /api/publisher-memberships/<id>/
 
 ---
 
-## Suggested Test Flow
+## Documentation
 
-1. Clone the repository
-2. Create and activate the virtual environment
-3. Install dependencies
-4. Copy `.env.example` to `.env`
-5. Update `.env` with valid MariaDB credentials
-6. Create the MariaDB database
-7. Run migrations
-8. Create a superuser
-9. Start the server
-10. Log in to the application or admin area
+Sphinx documentation is included in the `docs/` folder.
 
-Suggested functional test flow:
-1. Create an Editor account
-2. Create a Journalist account
-3. Create a Reader account
-4. Log in as an Editor and create one or more publishers
-5. Log in as a Journalist and submit an article
-6. Edit the article if required
-7. Log in as an Editor and approve the article
-8. Log in as a Reader and test subscriptions
-9. Verify article approval email behaviour
+Generated HTML output is available in:
+
+```text
+docs/build/html/index.html
+```
+
+This documentation was generated from the project source code and selected docstrings added for the assessment task.
 
 ---
 
-## Running Tests
+## Running tests
 
 Run all tests:
 

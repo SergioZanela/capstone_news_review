@@ -1,3 +1,10 @@
+"""
+API views for the Capstone News project.
+
+This module provides endpoints for article management, article approval,
+subscriptions, newsletters, publishers, and publisher memberships.
+"""
+
 from typing import Any
 
 from django.shortcuts import get_object_or_404
@@ -55,6 +62,7 @@ class ArticleListCreateAPIView(generics.ListCreateAPIView):
     """
 
     def get_queryset(self) -> Any:  # type: ignore[override]
+        """Return articles available to the current authenticated user."""
         user = self.request.user
 
         # Anonymous users: no access (keep your current behavior)
@@ -93,16 +101,19 @@ class ArticleListCreateAPIView(generics.ListCreateAPIView):
         return qs.distinct().order_by("-created_at")
 
     def get_serializer_class(self) -> Any:  # type: ignore[override]
+        """Return the serializer used for the current request method."""
         if self.request.method == "POST":
             return ArticleCreateSerializer
         return ArticleListSerializer
 
     def get_permissions(self) -> list[Any]:  # type: ignore[override]
+        """Return permissions based on whether the request is read or create."""
         if self.request.method == "POST":
             return [permissions.IsAuthenticated(), IsJournalist()]
         return [permissions.IsAuthenticated()]
 
     def perform_create(self, serializer: Any) -> None:
+        """Create a new article for the current journalist as pending approval."""
         serializer.save(
             author=self.request.user,
             approved=False,
@@ -129,16 +140,19 @@ class ArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_serializer_class(self) -> Any:  # type: ignore[override]
+        """Return the serializer used for the current request method."""
         if self.request.method in {"PUT", "PATCH"}:
             return ArticleCreateSerializer
         return ArticleDetailSerializer
 
     def get_permissions(self) -> list[Any]:  # type: ignore[override]
+        """Return permissions based on request method and article approval status."""
         if self.request.method in {"PUT", "PATCH", "DELETE"}:
             return [permissions.IsAuthenticated(), IsOwnerOrEditor()]
         return [permissions.IsAuthenticated(), CanReadApprovedArticles()]
 
     def get_object(self) -> Any:  # type: ignore[override]
+        """Retrieve the article and check permissions."""
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
@@ -152,6 +166,7 @@ class PendingArticleListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated, IsEditor]
 
     def get_queryset(self) -> Any:  # type: ignore[override]
+        """Return the queryset of pending articles for editors."""
         return Article.objects.filter(approved=False).order_by("-created_at")
 
 
@@ -165,6 +180,7 @@ class SubscribedArticleListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated, IsReader]
 
     def get_queryset(self) -> Any:
+        """Return the queryset of approved articles from the reader's subscriptions."""
         user = self.request.user
 
         publisher_ids = PublisherSubscription.objects.filter(
@@ -189,6 +205,7 @@ class ApproveArticleAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated, IsEditor]
 
     def post(self, request: Any, pk: int) -> Response:
+        """Approve the specified article."""
         article = get_object_or_404(Article, pk=pk)
 
         article.approved = True
@@ -220,6 +237,7 @@ class RejectArticleAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated, IsEditor]
 
     def post(self, request: Any, pk: int) -> Response:
+        """Reject the specified article."""
         article = get_object_or_404(Article, pk=pk)
         article_id = article.pk
         article.delete()
@@ -266,6 +284,7 @@ class PublisherSubscriptionListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated, IsReader]
 
     def get_queryset(self) -> Any:  # type: ignore[override]
+        """Return the queryset of publisher subscriptions for the current reader."""
         return (
             PublisherSubscription.objects
             .filter(reader=self.request.user)
@@ -274,6 +293,7 @@ class PublisherSubscriptionListCreateAPIView(generics.ListCreateAPIView):
         )
 
     def perform_create(self, serializer: Any) -> None:
+        """Create a new publisher subscription for the current reader."""
         serializer.save(reader=self.request.user)
 
 
@@ -291,6 +311,7 @@ class PublisherSubscriptionDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrEditor]
 
     def get_object(self) -> Any:  # type: ignore[override]
+        """Retrieve the publisher subscription and check permissions."""
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
@@ -311,6 +332,7 @@ class JournalistSubscriptionListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated, IsReader]
 
     def get_queryset(self) -> Any:  # type: ignore[override]
+        """Return the queryset of journalist subscriptions for the current reader."""
         return (
             JournalistSubscription.objects
             .filter(reader=self.request.user)
@@ -319,6 +341,7 @@ class JournalistSubscriptionListCreateAPIView(generics.ListCreateAPIView):
         )
 
     def perform_create(self, serializer: Any) -> None:
+        """Create a new journalist subscription for the current reader."""
         serializer.save(reader=self.request.user)
 
 
@@ -336,6 +359,7 @@ class JournalistSubscriptionDeleteAPIView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrEditor]
 
     def get_object(self) -> Any:  # type: ignore[override]
+        """Retrieve the journalist subscription and check permissions."""
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
@@ -361,16 +385,19 @@ class NewsletterListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_serializer_class(self) -> Any:  # type: ignore[override]
+        """Return the serializer used for the current request method."""
         if self.request.method == "POST":
             return NewsletterCreateUpdateSerializer
         return NewsletterListSerializer
 
     def get_permissions(self) -> list[Any]:  # type: ignore[override]
+        """Return permissions based on whether the request is read or create."""
         if self.request.method == "POST":
             return [permissions.IsAuthenticated(), IsJournalistOrEditor()]
         return [permissions.IsAuthenticated()]
 
     def perform_create(self, serializer: Any) -> None:
+        """Create a new newsletter with the current user as the author."""
         serializer.save(author=self.request.user)
 
 
@@ -392,11 +419,13 @@ class NewsletterDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     )
 
     def get_serializer_class(self) -> Any:  # type: ignore[override]
+        """Return the serializer used for the current request method."""
         if self.request.method in {"PUT", "PATCH"}:
             return NewsletterCreateUpdateSerializer
         return NewsletterDetailSerializer
 
     def get_permissions(self) -> list[Any]:  # type: ignore[override]
+        """Return permissions based on request method."""
         if self.request.method in {"PUT", "PATCH", "DELETE"}:
             return [
                 permissions.IsAuthenticated(),
@@ -405,6 +434,7 @@ class NewsletterDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return [permissions.IsAuthenticated()]
 
     def get_object(self) -> Any:  # type: ignore[override]
+        """Retrieve the newsletter and check permissions."""
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
@@ -429,11 +459,13 @@ class NewsletterUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     ]
 
     def get_serializer_class(self) -> Any:  # type: ignore[override]
+        """Return the serializer used for the current request method."""
         if self.request.method in {"PUT", "PATCH"}:
             return NewsletterCreateUpdateSerializer
         return NewsletterDetailSerializer
 
     def get_object(self) -> Any:  # type: ignore[override]
+        """Retrieve the newsletter and check permissions."""
         obj = super().get_object()
         self.check_object_permissions(self.request, obj)
         return obj
@@ -452,6 +484,7 @@ class PublisherMembershipListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self) -> Any:  # type: ignore[override]
+        """Return the queryset of publisher memberships with optional filters."""
         qs = (
             PublisherMembership.objects
             .select_related("publisher", "user")

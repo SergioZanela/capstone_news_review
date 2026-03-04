@@ -1,3 +1,11 @@
+"""
+Views for the main news application.
+
+This module handles article browsing, article approval, journalist article
+management, publisher management, and reader subscription actions in the
+web interface.
+"""
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden

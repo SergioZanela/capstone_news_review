@@ -88,9 +88,20 @@ The assessment work was organised using separate branches before being merged in
 
 ---
 
-## Local setup with virtual environment
+## Environment variables
 
-These instructions are written for Windows PowerShell.
+This project loads settings from a `.env` file (not committed to Git).
+
+Two example templates are provided:
+
+- **Local / non-Docker:** copy `.env.example` → `.env`
+- **Docker:** copy `.env.docker.example` → `.env.docker`
+
+> Note (Docker Desktop on Windows/macOS): when the database runs on your host machine, Docker typically needs `DB_HOST=host.docker.internal` instead of `127.0.0.1`.
+
+---
+
+## Local setup with virtual environment (Windows PowerShell)
 
 ### 1. Clone the repository
 
@@ -99,142 +110,93 @@ git clone https://github.com/SergioZanela/capstone_news_review.git
 cd capstone_news_review
 ```
 
-### 2. Create and activate a virtual environment
+2. Create and activate a virtual environment
 
-```powershell
+```text
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation, run:
+If PowerShell blocks activation:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+3. Install dependencies
 
 ```powershell
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 4. Create the environment file
-
-Copy `.env.example` to `.env`:
+5. Create the environment file
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Then open `.env` and replace the placeholder values with your own settings.
+Edit .env and set your own values (DB credentials, secret key, etc.).
 
-### 5. Create the MariaDB database
-
-Open MariaDB:
+5. Create the MariaDB database
 
 ```powershell
 mariadb -u root -p
-```
-
-Then run:
-
-```sql
 CREATE DATABASE capstone_news CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 EXIT;
 ```
 
-If `mariadb` is not available in PowerShell, use the full path to your MariaDB client executable.
-
-### 6. Apply migrations
+6. Apply migrations
 
 ```powershell
 python manage.py migrate
 ```
 
-### 7. Create a superuser
+7. Create a superuser
 
 ```powershell
 python manage.py createsuperuser
 ```
 
-### 8. Run the development server
+8. Run the development server
 
 ```powershell
 python manage.py runserver
 ```
 
-Open the application in your browser:
+Open:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
----
+Docker setup
 
-## Docker setup
+1. Create the Docker environment file
 
-The project can also be run with Docker.
-
-### 1. Review the environment template
-
-This project includes `.env.example` with notes for:
-
-- standard MariaDB local development values
-- Docker-specific guidance for database host overrides
-
-If you are running Docker against a MariaDB server on your Windows machine, use:
-
-```env
-DB_HOST=host.docker.internal
+```powershell
+Copy-Item .env.docker.example .env.docker
 ```
 
-instead of `127.0.0.1` inside the container environment.
+Edit .env.docker and set your own values.
 
-### 2. Build the Docker image
+2. Build the Docker image
 
 ```powershell
 docker build -t capstone-news-app .
 ```
 
-### 3. Run the container
+3. Run the container
 
 ```powershell
-docker run --env-file .env -p 8000:8000 capstone-news-app
+docker run --env-file .env.docker -p 8000:8000 capstone-news-app
 ```
 
-Open the application in your browser:
+Open:
 
 ```text
 http://localhost:8000/
-```
-
-### Notes
-
-- The container reads environment variables from the file passed with `--env-file`.
-- Do not commit real secrets to the repository.
-- If you test Docker with a host-installed MariaDB server, `host.docker.internal` is typically required for the database host.
-
----
-
-## Environment variables
-
-This project loads environment variables from a `.env` file for local (non-Docker) runs.
-
-### Local (non-Docker)
-1. Copy `.env.example` to `.env`
-2. Fill in your own values (DB credentials, secret key, etc.)
-
-### Docker
-1. Copy `.env.docker.example` to `.env.docker`
-2. Fill in your own values
-3. Run Docker using:
-
-```bash
-docker run --env-file .env.docker -p 8000:8000 capstone-news-app
-
-Docker access: http://localhost:8000/ once the container is running
 ```
 
 ---

@@ -6,6 +6,7 @@ __pycache__/
 .env.*
 .env.docker
 !.env.example
+!.env.docker.example
 .vscode/
 .idea/
 .pytest_cache/

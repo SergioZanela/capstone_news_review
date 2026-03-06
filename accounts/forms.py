@@ -7,18 +7,18 @@ class CustomUserRegistrationForm(UserCreationForm):
     """
     Registration form for public account creation.
 
-    Allow Reader and Journalist self-registration.
-    Editor accounts should be created/admin-assigned manually.
+    Allow Reader, Journalist, and Editor self-registration.
     """
 
     ROLE_CHOICES = (
         ("Reader", "Reader"),
         ("Journalist", "Journalist"),
+        ("Editor", "Editor")
     )
 
     role = forms.ChoiceField(choices=ROLE_CHOICES)
 
-    class Meta(UserCreationForm.Meta):
+    class Meta(UserCreationForm.Meta):  # type: ignore
         model = get_user_model()
         fields = ("username", "email", "role", "password1", "password2")
 

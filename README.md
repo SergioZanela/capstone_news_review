@@ -218,20 +218,24 @@ http://localhost:8000/
 
 ---
 
-### Environment variables
+## Environment variables
 
-This project uses environment variables loaded from a `.env` file.
+This project loads environment variables from a `.env` file for local (non-Docker) runs.
 
-#### Local (non-Docker) setup (recommended for this task)
+### Local (non-Docker)
 1. Copy `.env.example` to `.env`
 2. Fill in your own values (DB credentials, secret key, etc.)
 
-#### Docker setup (optional / later task)
-If you run the project using Docker, use the Docker example file:
-1. Copy `.env.docker.example` to `.env` **or** run Docker with `--env-file .env.docker`
+### Docker
+1. Copy `.env.docker.example` to `.env.docker`
 2. Fill in your own values
+3. Run Docker using:
 
-> Note (Docker Desktop on Windows/macOS): `DB_HOST=host.docker.internal` can be used to reach a database running on the host machine.
+```bash
+docker run --env-file .env.docker -p 8000:8000 capstone-news-app
+
+Docker access: http://localhost:8000/ once the container is running
+```
 
 ---
 

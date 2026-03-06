@@ -168,7 +168,7 @@ python manage.py runserver
 ### 9. Open:
 
 ```text
-`http://127.0.0.1:8000/`
+http://127.0.0.1:8000/
 ```
 
 ### Docker setup
@@ -195,8 +195,8 @@ docker run --env-file .env.docker -p 8000:8000 capstone-news-app
 
 ### Open:
 
-```text
-`http://localhost:8000/`
+```
+http://localhost:8000/
 ```
 
 ---

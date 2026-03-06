@@ -32,11 +32,17 @@ def _unique_subscriber_emails_for_article(article: Article) -> list[str]:
         ).values_list("reader__email", flat=True)
 
     emails = {
-        (email or "").strip()
+        (email or "").strip().lower()
         for email in list(publisher_emails) + list(journalist_emails)
     }
 
-    return sorted(email for email in emails if email)
+    return sorted(
+        email
+        for email in emails
+        if email
+        and not email.startswith("noemail+")
+        and not email.endswith("@local.invalid")
+    )
 
 
 def send_article_approved_email_to_subscribers(article: Article) -> int:

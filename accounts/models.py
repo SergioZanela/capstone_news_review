@@ -36,7 +36,7 @@ class CustomUser(AbstractUser):
         Save the user and keep their group membership aligned with their role.
         """
         if not self.email:
-            self.email = f"{self.username}@example.com"
+            self.email = f"noemail+{self.username}@local.invalid"
         super().save(*args, **kwargs)
 
         role_to_group = {

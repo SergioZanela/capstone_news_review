@@ -218,28 +218,20 @@ http://localhost:8000/
 
 ---
 
-## Environment variables
+### Environment variables
 
-The project loads configuration from `.env` automatically.
+This project uses environment variables loaded from a `.env` file.
 
-Typical values include:
+#### Local (non-Docker) setup (recommended for this task)
+1. Copy `.env.example` to `.env`
+2. Fill in your own values (DB credentials, secret key, etc.)
 
-```env
-SECRET_KEY=your_secret_key_here
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
+#### Docker setup (optional / later task)
+If you run the project using Docker, use the Docker example file:
+1. Copy `.env.docker.example` to `.env` **or** run Docker with `--env-file .env.docker`
+2. Fill in your own values
 
-DB_NAME=your_database_name
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
-DB_HOST=127.0.0.1
-DB_PORT=3306
-
-EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
-DEFAULT_FROM_EMAIL=no-reply@capstonenews.local
-```
-
-`.env.example` is included as a safe template and setup reference.
+> Note (Docker Desktop on Windows/macOS): `DB_HOST=host.docker.internal` can be used to reach a database running on the host machine.
 
 ---
 

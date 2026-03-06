@@ -102,20 +102,6 @@ Two example templates are provided:
 ---
 
 ## Local setup with virtual environment (Windows PowerShell)
-## Environment variables
-
-This project loads settings from a `.env` file (not committed to Git).
-
-Two example templates are provided:
-
-- **Local / non-Docker:** copy `.env.example` → `.env`
-- **Docker:** copy `.env.docker.example` → `.env.docker`
-
-> Note (Docker Desktop on Windows/macOS): when the database runs on your host machine, Docker typically needs `DB_HOST=host.docker.internal` instead of `127.0.0.1`.
-
----
-
-## Local setup with virtual environment (Windows PowerShell)
 
 ### 1. Clone the repository
 
@@ -124,22 +110,21 @@ git clone https://github.com/SergioZanela/capstone_news_review.git
 cd capstone_news_review
 ```
 
-2. Create and activate a virtual environment
+### 2. Create and activate a virtual environment
 
-```text
-```text
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### If PowerShell blocks activation:
+#### If PowerShell blocks activation:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 ```
 
-3. Install dependencies
+### 3. Install dependencies
 
 ```powershell
 python -m pip install --upgrade pip
@@ -168,13 +153,13 @@ EXIT;
 python manage.py migrate
 ```
 
-7. Create a superuser
+### 7. Create a superuser
 
 ```powershell
 python manage.py createsuperuser
 ```
 
-8. Run the development server
+### 8. Run the development server
 
 ```powershell
 python manage.py runserver
@@ -202,10 +187,9 @@ Copy-Item .env.docker.example .env.docker
 docker build -t capstone-news-app .
 ```
 
-3. Run the container
+### 3. Run the container
 
 ```powershell
-docker run --env-file .env.docker -p 8000:8000 capstone-news-app
 docker run --env-file .env.docker -p 8000:8000 capstone-news-app
 ```
 
@@ -390,19 +374,19 @@ This documentation was generated from the project source code and selected docst
 
 ## Running tests
 
-Run all tests:
+### Run all tests:
 
 ```powershell
 python manage.py test
 ```
 
-Run article API tests:
+### Run article API tests:
 
 ```powershell
 python manage.py test api.tests.test_article_api
 ```
 
-Run email notification tests:
+### Run email notification tests:
 
 ```powershell
 python manage.py test news.tests.test_email_notifications
